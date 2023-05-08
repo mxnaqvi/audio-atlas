@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    const accessToken = '"BQB-_C9NogVfphuZxzad6tRR3JpkfA7bbevbGstRqly0xWjNkqBskHSyzYk8cmv9PcNBJ_HLBoyPIziZa9eDAmM16J3BWb80BKLQ1zoYfOgEmIh8XSHT';
+    const accessToken = 'BQB-_C9NogVfphuZxzad6tRR3JpkfA7bbevbGstRqly0xWjNkqBskHSyzYk8cmv9PcNBJ_HLBoyPIziZa9eDAmM16J3BWb80BKLQ1zoYfOgEmIh8XSHT';
 
 // Function to search for an artist
 async function searchArtist(artistName) {
