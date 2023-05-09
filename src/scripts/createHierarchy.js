@@ -1,4 +1,3 @@
-
 const accessToken = 'BQBdfS1Ya7jUGsLCkmpQ_N7jM4Z4FX7Z-jqJUJoSWMd60iShBHr5AWSukAoIYuyI4EbbwNWbFGu2ZPMYeWi3-eEK2rPbZdRi4iU69_lD1O00CY99l6iw';
 
 // Function to search for an artist
