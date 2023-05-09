@@ -74,72 +74,72 @@ try {
 }
 }
 
-async function createFamilyTree(artistName) {
-const artist = await searchArtist(artistName);
-if (!artist) return null;
-
-console.log('Artist:', artist.name);
-
-const albums = await getArtistAlbums(artist.id);
-if (!albums) return null;
-
-const albumList = [];
-for (const album of albums) {
-  console.log('Album:', album.name);
-
-  const tracks = await getAlbumTracks(album.id);
-  if (!tracks) continue;
-
-  const trackList = [];
-  for (const track of tracks) {
-    console.log('Song:', track.name);
-    trackList.push(track.name);
-  }
-
-  albumList.push({ albumName: album.name, tracks: trackList });
-}
-
-return { name: artist.name, albums: albumList };
-}
-
 // async function createFamilyTree(artistName) {
-//   const artist = await searchArtist(artistName);
-//   if (!artist) return null;
+// const artist = await searchArtist(artistName);
+// if (!artist) return null;
 
-//   const albums = await getArtistAlbums(artist.id);
-//   if (!albums) return null;
+// console.log('Artist:', artist.name);
 
-//   const familyTree = {
-//     name: artist.name,
-//     title: 'Artist',
-//     children: []
-//   };
+// const albums = await getArtistAlbums(artist.id);
+// if (!albums) return null;
 
-//   for (const album of albums) {
-//     const tracks = await getAlbumTracks(album.id);
-//     if (!tracks) continue;
+// const albumList = [];
+// for (const album of albums) {
+//   console.log('Album:', album.name);
 
-//     const albumNode = {
-//       name: album.name,
-//       title: 'Album',
-//       children: []
-//     };
+//   const tracks = await getAlbumTracks(album.id);
+//   if (!tracks) continue;
 
-//     for (const track of tracks) {
-//       const trackNode = {
-//         name: track.name,
-//         title: 'Song',
-//         children: []
-//       };
-
-//       albumNode.children.push(trackNode);
-//     }
-
-//     familyTree.children.push(albumNode);
+//   const trackList = [];
+//   for (const track of tracks) {
+//     console.log('Song:', track.name);
+//     trackList.push(track.name);
 //   }
 
-//   return familyTree;
+//   albumList.push({ albumName: album.name, tracks: trackList });
 // }
+
+// return { name: artist.name, albums: albumList };
+// }
+
+async function createFamilyTree(artistName) {
+  const artist = await searchArtist(artistName);
+  if (!artist) return null;
+
+  const albums = await getArtistAlbums(artist.id);
+  if (!albums) return null;
+
+  const familyTree = {
+    name: artist.name,
+    title: 'Artist',
+    children: []
+  };
+
+  for (const album of albums) {
+    const tracks = await getAlbumTracks(album.id);
+    if (!tracks) continue;
+
+    const albumNode = {
+      name: album.name,
+      title: 'Album',
+      children: []
+    };
+
+    for (const track of tracks) {
+      const trackNode = {
+        name: track.name,
+        title: 'Song',
+        children: []
+      };
+
+      albumNode.children.push(trackNode);
+    }
+
+    familyTree.children.push(albumNode);
+  }
+
+  return familyTree;
+}
 
 function clearFamilyTree() {
 const familyTreeContainer = document.getElementById('familyTree');
