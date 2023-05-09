@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    const accessToken = 'BQB-_C9NogVfphuZxzad6tRR3JpkfA7bbevbGstRqly0xWjNkqBskHSyzYk8cmv9PcNBJ_HLBoyPIziZa9eDAmM16J3BWb80BKLQ1zoYfOgEmIh8XSHT';
+    const accessToken = 'BQD5snpGkI0g5Fy4cSlmU2J-VO78j4dVMxD_FQTEtihVaCsdHUIkKsknAUJk0EJ8rVoNwCTPVK1TKnG46nsjwaur1FDz-XgKXjhLYl1UqhW0AXh9rQ2C';
 
 // Function to search for an artist
 async function searchArtist(artistName) {
@@ -102,6 +102,45 @@ async function createFamilyTree(artistName) {
 
   return { name: artist.name, albums: albumList };
 }
+
+// async function createFamilyTree(artistName) {
+//   const artist = await searchArtist(artistName);
+//   if (!artist) return null;
+
+//   const albums = await getArtistAlbums(artist.id);
+//   if (!albums) return null;
+
+//   const familyTree = {
+//     name: artist.name,
+//     title: 'Artist',
+//     children: []
+//   };
+
+//   for (const album of albums) {
+//     const tracks = await getAlbumTracks(album.id);
+//     if (!tracks) continue;
+
+//     const albumNode = {
+//       name: album.name,
+//       title: 'Album',
+//       children: []
+//     };
+
+//     for (const track of tracks) {
+//       const trackNode = {
+//         name: track.name,
+//         title: 'Song',
+//         children: []
+//       };
+
+//       albumNode.children.push(trackNode);
+//     }
+
+//     familyTree.children.push(albumNode);
+//   }
+
+//   return familyTree;
+// }
 
 function clearFamilyTree() {
   const familyTreeContainer = document.getElementById('familyTree');
