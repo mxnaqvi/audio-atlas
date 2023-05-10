@@ -4,10 +4,10 @@ import * as d3 from 'd3';
 const chart = async (artistName) => {
   const data = await createFamilyTree(artistName);
 
-  const width = 750;
-  const dx = 10;
+  const width = 960; // Adjust the width of the chart
+  const dx = 20;
   const dy = width / 6;
-  const margin = { top: 10, right: 120, bottom: 10, left: 40 };
+  const margin = { top: 10, right: 120, bottom: 10, left: 240 }; // Adjust the margin values
   const diagonal = d3.linkHorizontal().x((d) => d.y).y((d) => d.x);
   const tree = d3.tree().nodeSize([dx, dy]);
 
@@ -23,7 +23,7 @@ const chart = async (artistName) => {
   const svg = d3
     .create("svg")
     .attr("viewBox", [-margin.left, -margin.top, width, dx])
-    .style("font", "10px sans-serif")
+    .style("font", "11px sans-serif")
     .style("user-select", "none");
 
   const gLink = svg
@@ -140,8 +140,9 @@ const chart = async (artistName) => {
 }
 
 update(root);
-
+console.log("beepboop chart printed")
 return svg.node();
+
 };
 
 export default chart;

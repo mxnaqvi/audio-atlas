@@ -5,22 +5,27 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Poppins:wght@100&display=swap" rel="stylesheet">
     <link href="./dist/main.css" rel="stylesheet">
     <script src="./dist/main.js"></script>
     <!-- <script src="https://d3js.org/d3.v7.min.js"></script> -->
 </head>
 
-  <body>
+<body>
   <div id="header">
-      <h1>AUDIO ATLAS</h1>
+    <h1>AUDIO ATLAS</h1>
     <div id="main">
       <div>
         <input type="text" id="artistNameInput" placeholder="Enter artist name">
         <button id="searchButton">Search</button>
       </div>
-      <div id="chart"></div>
+      <div class="chart-container">
+        <div id="chart"></div>
+      </div>
+    </div>
   </div>
-
-  </body>
+</body>
 
 </html>

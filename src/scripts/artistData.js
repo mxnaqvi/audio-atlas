@@ -1,5 +1,5 @@
 
-const accessToken = 'BQA7s22sRzwsshz_0rr88mphIvUj4EpF2EOeZ4ijrxl3h3xBSBvDrRMYDjnnWjhiBUySP4Kq373IhXZ5Bu7jMEMyfs0VN9ZiGh3gvs6DHlD4rL0qgt_N';
+const accessToken = 'BQBHixtvpLyP6PLMH8kSGKbXt9XLk32JmtrIN0NjwJs0CBsdNbw46ZNzgotDEe_NEB5ebuy56Ox73VNmmZqcMOnlAy9XPGbyN2Gyb7oyMvYcQlk9yB6O';
 
 // Function to search for an artist
 async function searchArtist(artistName) {
@@ -87,7 +87,17 @@ async function createFamilyTree(artistName) {
     children: []
   };
 
+  const uniqueAlbums = [];
+  const uniqueAlbumNames = new Set();
+
   for (const album of albums) {
+    if (!uniqueAlbumNames.has(album.name)) {
+      uniqueAlbums.push(album);
+      uniqueAlbumNames.add(album.name);
+    }
+  }
+
+  for (const album of uniqueAlbums) {
     const tracks = await getAlbumTracks(album.id);
     if (!tracks) continue;
 
@@ -109,7 +119,7 @@ async function createFamilyTree(artistName) {
 
     familyTree.children.push(albumNode);
   }
-  console.log(familyTree)
+
   return familyTree;
 }
 
