@@ -1,5 +1,5 @@
 
-const accessToken = 'BQBdfS1Ya7jUGsLCkmpQ_N7jM4Z4FX7Z-jqJUJoSWMd60iShBHr5AWSukAoIYuyI4EbbwNWbFGu2ZPMYeWi3-eEK2rPbZdRi4iU69_lD1O00CY99l6iw';
+const accessToken = 'BQBTwN8cUrXrW0aQFpUr_ub03aThLCfUXDdO8HoYhD9x139O4r-5415Jj-ff8W44wlGBWXJWQaW9Q0_wtYOmttFxNVVdDU_bE7ogIEJlvYZ0oaCgzdGb';
 
 // Function to search for an artist
 async function searchArtist(artistName) {
@@ -109,7 +109,7 @@ async function createFamilyTree(artistName) {
 
     familyTree.children.push(albumNode);
   }
-  console.log(familyTree)
+  
   return familyTree;
 }
 
