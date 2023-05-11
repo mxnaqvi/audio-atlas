@@ -1,5 +1,5 @@
 
-const accessToken = 'BQAPM9menuhyXBC8ioZ_EjUJ9XUORST9T-j86GV7_PMN7P1iSEjcNV8d06S5IgsSqSaq6os-LC3pENhX9ZAlTastm4A2KK_rATXcC6qnP2LEf_GpX1tw';
+const accessToken = 'BQDAvZda0mzqNJsEujp3SYxwZ-krUiyH0L_WWu2LXSv4W-xGXJiKRah9T9R59Jg-lel28kfn3z8NAvMbmqK6fh4BdOWWS9nGN7jjClM78d2Ze90TR7js';
 
 // Function to search for an artist
 async function searchArtist(artistName) {
