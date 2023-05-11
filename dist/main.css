@@ -92,9 +92,9 @@ h1 {
   border-radius: 20px;
   padding: 10px;
   text-align: center;
-  border: none; /* Add this line to remove the border */
-  box-shadow: none; /* Add this line to remove the shadow */
-  outline: none; /* Add this line to remove the outline */
+  border: none;
+  box-shadow: none;
+  outline: none;
   background-color: rgba(255, 255, 255, 0.6);
 }
 
@@ -187,6 +187,7 @@ h1 {
   border-radius: 10px;
   transition: transform 0.2s ease-in-out;
   font-family: "Darumadrop One", cursive;
+  background-color: rgba(84, 165, 208, 0.8);
 }
 
 .modal-content:hover {
