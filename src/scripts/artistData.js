@@ -1,7 +1,7 @@
 
-const accessToken = 'BQDAvZda0mzqNJsEujp3SYxwZ-krUiyH0L_WWu2LXSv4W-xGXJiKRah9T9R59Jg-lel28kfn3z8NAvMbmqK6fh4BdOWWS9nGN7jjClM78d2Ze90TR7js';
+const accessToken = 'BQA9CbUjVd701HwO-rf7eAR-FM6Pag3R_8DTb5M-i4SBJtPtkCFUleZAzAIQtCC3yueqU5_RkVS0K5w2CioUXZUFuChp-DBmkn2ccJVKaeP-B0yDPKU0';
 
-// Function to search for an artist
+
 async function searchArtist(artistName) {
     try {
         const response = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(artistName)}&type=artist&limit=1`, {
@@ -24,7 +24,7 @@ async function searchArtist(artistName) {
     }
 }
 
-// Function to retrieve artist information
+
 async function getArtistInfo(artistId) {
 try {
   const response = await fetch(`https://api.spotify.com/v1/artists/${artistId}`, {
@@ -40,7 +40,7 @@ try {
 }
 }
 
-// Function to retrieve an artist's albums
+
 async function getArtistAlbums(artistId) {
 try {
   const response = await fetch(`https://api.spotify.com/v1/artists/${artistId}/albums`, {
@@ -57,7 +57,7 @@ try {
 }
 }
 
-// Function to retrieve album tracks
+
 async function getAlbumTracks(albumId) {
 try {
   const response = await fetch(`https://api.spotify.com/v1/albums/${albumId}/tracks`, {

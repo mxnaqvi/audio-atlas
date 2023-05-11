@@ -4,10 +4,10 @@ import * as d3 from 'd3';
 const chart = async (artistName) => {
   const data = await createFamilyTree(artistName);
 
-  const width = 960; // Adjust the width of the chart
+  const width = 960; 
   const dx = 20;
   const dy = width / 6;
-  const margin = { top: 10, right: 120, bottom: 10, left: 240 }; // Adjust the margin values
+  const margin = { top: 10, right: 130, bottom: 10, left: 240 }; // Adjust the margin values
   const diagonal = d3.linkHorizontal().x((d) => d.y).y((d) => d.x);
   const tree = d3.tree().nodeSize([dx, dy]);
 
@@ -45,7 +45,7 @@ const chart = async (artistName) => {
     const nodes = root.descendants().reverse();
     const links = root.links();
 
-    // Compute the new tree layout.
+    
     tree(root);
 
     let left = root;
@@ -63,10 +63,10 @@ const chart = async (artistName) => {
       .attr("viewBox", [-margin.left, left.x - margin.top, width, height])
       .tween("resize", window.ResizeObserver ? null : () => () => svg.dispatch("toggle"));
 
-    // Update the nodes…
+    
     const node = gNode.selectAll("g").data(nodes, (d) => d.id);
 
-    // Enter any new nodes at the parent's previous position.
+    
     const nodeEnter = node
       .enter()
       .append("g")
@@ -96,7 +96,7 @@ const chart = async (artistName) => {
     .attr("stroke-width", 3)
     .attr("stroke", "white");
 
-  // Transition nodes to their new position.
+ 
   const nodeUpdate = node
     .merge(nodeEnter)
     .transition(transition)
@@ -104,7 +104,7 @@ const chart = async (artistName) => {
     .attr("fill-opacity", 1)
     .attr("stroke-opacity", 1);
 
-  // Transition exiting nodes to the parent's new position.
+  
   const nodeExit = node
     .exit()
     .transition(transition)
@@ -113,10 +113,10 @@ const chart = async (artistName) => {
     .attr("fill-opacity", 0)
     .attr("stroke-opacity", 0);
 
-  // Update the links…
+ 
   const link = gLink.selectAll("path").data(links, (d) => d.target.id);
 
-  // Enter any new links at the parent's previous position.
+ 
   const linkEnter = link
     .enter()
     .append("path")
@@ -125,16 +125,16 @@ const chart = async (artistName) => {
       return diagonal({ source: o, target: o });
     });
 
-  // Transition links to their new position.
+  
   link.merge(linkEnter).transition(transition).attr("d", diagonal);
 
-  // Transition exiting nodes to the parent's new position.
+ 
   link.exit().transition(transition).remove().attr("d", (d) => {
     const o = { x: source.x, y: source.y };
     return diagonal({ source: o, target: o });
   });
 
-  // Stash the old positions for transition.
+  
   root.eachBefore((d) => {
     d.x0 = d.x;
     d.y0 = d.y;

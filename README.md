@@ -1,43 +1,72 @@
 
-Background:
-Audio Atlas is a JavaScript data visualizer that allows users to enter the name of an artist and get a family tree-like structure of their albums and songs off those albums. The application uses the Spotify API to gather artist and album information and D3.js to visualize the data.
+## Welcome to Audio Atlas!
+Audio Atlas is a JavaScript data visualizer that allows users to enter the name of an artist and get a collpsible tree chart containing the entire discography of their albums and songs off those albums. 
 
-Functionality & MVPs:
+## Technologies Used
+Audio Atlas was built using JavaScript, D3.js, and the Spotify API.
 
-Users can enter the name of an artist to get their album and song data.
-The application will generate a family tree or web-like structure of the artist's albums and songs.
-Users can click on an album or song to view more information about it.
+## Features
+Allows users to search for an artist annd interact with the data by allowing them to collapse and expand the nodes of the tree chart.
 
-Wireframes:
-The application will consist of a search bar where users can enter the name of an artist, a display area where the family tree-like structure will be generated. The family tree will be designed using D3.js.
+## Code Snippets
 
-Technologies, Libraries, APIs:
+The following code snippet shows the function that creates the object that will be used to generate the tree chart. The function takes in the name of an artist as a parameter and returns an object containing the artist's name, the title of the node, and an array of the artist's albums. Each album object contains the album's name, the title of the node, and an array of the album's songs. Each song object contains the song's name and the title of the node.
+This is done by Utilizing spotify's API to get the artist's id, then using that id to get the artist's albums, and then using the album's id to get the album's tracks. The function returns null if the artist does not exist or if the artist does not have any albums.
 
-JavaScript
-D3.js
-Spotify API
-Implementation Timeline:
-Friday Afternoon & Weekend:
 
-Set up project repository and boilerplate code
-Set up the proxy server
-Research and familiarize with Spotify API and D3.js
-Monday:
+---
+    async function createFamilyTree(artistName) {
+    const artist = await searchArtist(artistName);
+    if (!artist) return null;
 
-Implement basic search functionality to retrieve artist data from Spotify API
+    const albums = await getArtistAlbums(artist.id);
+    if (!albums) return null;
 
-Tuesday:
+    const familyTree = {
+        name: artist.name,
+        title: 'Artist',
+        children: []
+    };
 
-Implement basic D3.js visualization to generate a family tree-like structure of the artist's albums and songs
+    const uniqueAlbums = [];
+    const uniqueAlbumNames = new Set();
 
-Wednesday:
+    for (const album of albums) {
+        if (!uniqueAlbumNames.has(album.name)) {
+        uniqueAlbums.push(album);
+        uniqueAlbumNames.add(album.name);
+        }
+    }
 
-Test and debug search and visualization functionality
+    for (const album of uniqueAlbums) {
+        const tracks = await getAlbumTracks(album.id);
+        if (!tracks) continue;
 
-Thursday Morning:
+        const albumNode = {
+        name: album.name,
+        title: 'Album',
+        children: []
+        };
 
-Finalize design and layout of the application
-Test and debug all functionality to ensure a seamless user experience
+        for (const track of tracks) {
+        const trackNode = {
+            name: track.name,
+            title: 'Song',
+            children: []
+        };
 
-Deploy the application to GitHub Pages
-Make final adjustments to the application and prepare for presentation
+        albumNode.children.push(trackNode);
+        }
+
+        familyTree.children.push(albumNode);
+    }
+
+    return familyTree;
+    }
+---
+
+
+## Future Implementations
+* Add a feature that allows users to play a snippet of a song by clicking on the song node.
+* Clean up the island graphic and make it more visually appealing.
+* Add a branch that allows users to see the songs that an artist has been featured on.

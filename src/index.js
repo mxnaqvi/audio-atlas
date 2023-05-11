@@ -17,10 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   modalButton.addEventListener('click', () => {
-    modalContainer.style.display = 'block'; // Display the modal window
+    modalContainer.style.display = 'block'; 
   });
 
   closeBtn.addEventListener('click', () => {
-    modalContainer.style.display = 'none'; // Hide the modal window when close button is clicked
+    modalContainer.style.display = 'none'; 
   });
 });
