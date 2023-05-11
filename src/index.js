@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   searchButton.addEventListener('click', async () => {
     const artistName = artistNameInput.value;
-    chartEle.innerHTML = ''; // Clear previous chart
+    chartEle.innerHTML = ''; 
     chartEle.append(await chart(artistName));
   });
 });

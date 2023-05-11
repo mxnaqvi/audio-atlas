@@ -1,12 +1,79 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+body {
+  background-color: #1c2e4a;
+  color: white;
+}
+
 #header {
   font-family: "Poppins", sans-serif;
   text-align: center;
 }
 
+#chart {
+  background-color: #D9BD8B;
+  border-radius: 21%;
+}
+
 h1 {
   font-family: "Montserrat", sans-serif;
   text-align: center;
+}
+
+.rounded-input {
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rounded-input {
+  width: 200px;
+  flex: none;
+}
+
+.custom-search-button {
+  width: 30px;
+  height: 30px;
+  margin-left: 1px;
+  background-color: green;
+  border-radius: 50%;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.custom-search-button:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+}
+
+#github-link {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1c2e4a;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#github-link img {
+  width: 35px;
+  height: 35px;
+  margin-right: 5px;
+}
+
+#github-link:hover {
+  background-color: #555;
 }

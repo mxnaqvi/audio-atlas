@@ -24,7 +24,9 @@ const chart = async (artistName) => {
     .create("svg")
     .attr("viewBox", [-margin.left, -margin.top, width, dx])
     .style("font", "11px sans-serif")
-    .style("user-select", "none");
+    .style("border-radius", "25%")
+    .style("background-color", "#598556");
+    
 
   const gLink = svg
     .append("g")
