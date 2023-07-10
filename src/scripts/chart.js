@@ -2,7 +2,14 @@ import createFamilyTree from './artistData';
 import * as d3 from 'd3';
 
 const chart = async (artistName) => {
+  const loadingContainer = document.getElementById('loadingContainer');
+  loadingContainer.style.display = 'block';
+
   const data = await createFamilyTree(artistName);
+
+  loadingContainer.style.display = 'none';
+  
+  console.log('za bluetooth deevice is now cone nected')
 
   const width = 960; 
   const dx = 20;
@@ -142,7 +149,10 @@ const chart = async (artistName) => {
 }
 
 update(root);
-console.log("beepboop chart printed")
+
+const clearButton = document.getElementById('clearButton');
+clearButton.style.display = 'block';
+
 return svg.node();
 
 };

@@ -1,28 +1,58 @@
 
-const accessToken = 'BQDM9OSwdk3p0aHd36QNW2lp20P7gR5pANd3hRZBgCEiOz3caWtDu51vbTBfZAz8o6ixEGGjoZxe4lRxUapTauFE800yd9G0yMrkn5Obv14PRr9nfeA';
+const clientId = '9556daa5983e436886ab5cad5a62e674';
+const clientSecret = 'bd138acae7584b8e904aaad476f264b9';
 
+let accessToken = '';
+
+async function refreshAccessToken() {
+  try {
+    const response = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: `Basic ${btoa(`${clientId}:${clientSecret}`)}`,
+      },
+      body: 'grant_type=client_credentials',
+    });
+
+    const data = await response.json();
+    accessToken = data.access_token;
+  } catch (error) {
+    console.error('Error refreshing access token:', error);
+  }
+}
 
 async function searchArtist(artistName) {
-    try {
-        const response = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(artistName)}&type=artist&limit=1`, {
-            headers: {
-                Authorization: `Bearer ${accessToken}`
-            }
-        });
+  if (!accessToken) {
+    await refreshAccessToken();
+  }
 
-        const data = await response.json();
-        const artists = data.artists.items;
-        if (artists.length > 0) {
-            return artists[0];
-        } else {
-            console.log('Artist not found.');
-            return null;
-        }
-    } catch (error) {
-        console.error('Error searching for artist:', error);
-        return null;
+  try {
+    const response = await fetch(
+      `https://api.spotify.com/v1/search?q=${encodeURIComponent(
+        artistName
+      )}&type=artist&limit=1`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+
+    const data = await response.json();
+    const artists = data.artists.items;
+    if (artists.length > 0) {
+      return artists[0];
+    } else {
+      console.log('Artist not found.');
+      return null;
     }
+  } catch (error) {
+    console.error('Error searching for artist:', error);
+    return null;
+  }
 }
+;
 
 
 async function getArtistInfo(artistId) {

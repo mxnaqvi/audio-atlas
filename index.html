@@ -23,6 +23,12 @@
   <a id="github-link" class="button" href="https://github.com/mxnaqvi">
     <img src="./assets/github-mark.png" alt="GitHub Logo">
   </a>
+  <a id="linkedin-link" class="button" href="https://www.linkedin.com/in/your-linkedin-profile">
+    <img src="./assets/LI-In-Bug.png" alt="LinkedIn Logo">
+  </a>
+  <a id="wellfound-link" class="button" href="https://www.wellfound.com/your-welfound-profile">
+    <img src="./assets/wellfound-symbol-black.png" alt="Wellfound Logo">
+  </a>  
   <button id="modalButton" class="button">
     <img src="./assets/information-button-icon-23.png" alt="Open Modal" class="modal-button-image">
   </button>
@@ -45,6 +51,13 @@
         <input type="text" id="artistNameInput" placeholder="Enter artist name" class="rounded-input">
         <input type="image" id="searchButton" src="./assets/SearchIcon.png" alt="Search" class="custom-search-button">
       </div>
+      <div id="loadingContainer" style="display: none;">
+        Loading...
+        <img src="assets/loading.gif" alt="Loading..." id="loadingGif">
+      </div>
+      <div id="clearButtonContainer">
+        <button id="clearButton" style="display: none;">Clear Chart</button>
+      </div>      
       <div class="chart-container">
         <div id="chart"></div>
       </div>

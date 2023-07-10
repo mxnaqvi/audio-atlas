@@ -9,6 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalButton = document.getElementById('modalButton');
   const modalContainer = document.getElementById('modalContainer');
   const closeBtn = document.querySelector('.close');
+  const clearButton = document.getElementById('clearButton');
+
+  clearButton.addEventListener('click', () => {
+    
+    chartEle.innerHTML = '';
+
+    clearButton.style.display = 'none';
+  });
 
   searchButton.addEventListener('click', async () => {
     const artistName = artistNameInput.value;
@@ -23,4 +31,5 @@ document.addEventListener('DOMContentLoaded', () => {
   closeBtn.addEventListener('click', () => {
     modalContainer.style.display = 'none'; 
   });
+  
 });
