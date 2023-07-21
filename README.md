@@ -1,6 +1,7 @@
 
 ## Welcome to Audio Atlas!
 Audio Atlas is a JavaScript data visualizer that allows users to enter the name of an artist and get a collpsible tree chart containing the entire discography of their albums and songs off those albums. 
+[Live Link](https://mxnaqvi.github.io/audio-atlas/)
 
 ## Technologies Used
 Audio Atlas was built using JavaScript, D3.js, and the Spotify API.
