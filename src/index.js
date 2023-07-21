@@ -6,10 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const chartEle = document.getElementById('chart');
   const searchButton = document.getElementById('searchButton');
   const artistNameInput = document.getElementById('artistNameInput');
-  const modalButton = document.getElementById('modalButton');
-  const modalContainer = document.getElementById('modalContainer');
-  const closeBtn = document.querySelector('.close');
   const clearButton = document.getElementById('clearButton');
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalContainer = document.getElementById('modalContainer');
+  const header = document.getElementById('header');
+  const main = document.getElementById('main');
+  const closeBtn = document.querySelector('.close');
 
   clearButton.addEventListener('click', () => {
     
@@ -25,11 +27,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   modalButton.addEventListener('click', () => {
+    modalOverlay.style.display = 'block'; 
     modalContainer.style.display = 'block'; 
+    header.classList.add('blur-effect'); 
+    main.classList.add('blur-effect');
   });
 
-  closeBtn.addEventListener('click', () => {
+  function closeModal() {
+    modalOverlay.style.display = 'none'; 
     modalContainer.style.display = 'none'; 
+    header.classList.remove('blur-effect'); 
+    main.classList.remove('blur-effect');
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+
+  modalOverlay.addEventListener('click', (event) => {
+    if (event.target === modalOverlay) {
+      closeModal();
+    }
   });
-  
+
 });
